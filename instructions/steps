@@ -1,0 +1,76 @@
+1. create a client and server folder inside express-react-project
+
+2. cd  into server
+
+3. npm init -y 
+
+4. go into the package.json and change "main" to "server.js" 
+
+5. create server.js file (touch server.js)
+
+6. npm i express
+
+7. npm i nodemon -D
+
+8. in package.json go to "scripts" and create:
+"start": "node server",
+"dev": "nodemon server"
+
+9. cd out of server (cd ..)
+
+10. cd into client (cd client)
+
+11. npx create-react-app@latest .
+
+12. go into client and remove all the boiler point code 
+-App.css
+-App.js (header)
+
+13. go to the backend to server.js to setup backend api 
+code: 
+const express = require('express')
+
+const app = express()
+
+app.get("/api", (req, res) =>{
+   
+    res.json({ "users": ["userOne", "userTwo", "userThree"]})
+
+})
+
+app.listen(5000, () => {console.log("server started on port 5000")})
+
+14. cd .. then cd server
+
+15. npm run dev
+
+16. go to package.json on front end and create this line:
+"proxy": "http://localhost:5000",
+
+17. in App.js import useEffect and useState
+
+18. create state variable 
+const [backendData, setbackendData] = useState([{}])
+
+19. fetch backend api 
+code: 
+
+  useEffect(() =>{
+    fetch("/api").then(
+      response => response.json()
+    ).then(
+      data => {
+        setbackendData(data)
+      }
+    )
+}, [])
+
+20. open another terminal (command backslash) then cd client
+
+21. npm start 
+
+
+
+
+youtube link: 
+https://www.youtube.com/watch?v=w3vs4a03y3I
